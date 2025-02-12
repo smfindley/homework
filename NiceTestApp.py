@@ -5,6 +5,7 @@ import threading
 import datetime
 import pathlib
 
+# GLOBALS
 g_app_path = pathlib.Path(__file__).resolve().parent
 g_app_name = pathlib.Path(__file__).name
 g_log_name = str(pathlib.Path(__file__).stem) + ".log"
@@ -65,7 +66,7 @@ def print_sys_info():
     disk_list = psutil.disk_partitions(all=False);
     log(f"Total Number of Hard Disks: {len(disk_list)}")
     
-    #Top 5 CPU Processes
+    #Top 5 CPU Processes - multithreaded
     log("Top 5 Processes by % CPU Utilization (5 second sample interval):")
     process_list = list()
     measure_cpu_percent_threadpool(psutil.process_iter(), process_list)
